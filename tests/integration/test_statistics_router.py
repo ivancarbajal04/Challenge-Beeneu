@@ -21,7 +21,6 @@ class TestTotalUsersEndpoint:
         data = response.json()
         assert data["total_users"] == 42
         
-        # Verify RPC was called correctly
         mock_publisher.call_rpc.assert_called_once_with(
             event_type="TOTAL_USERS_RPC",
             payload={}
@@ -68,7 +67,6 @@ class TestTotalUpdatesEndpoint:
         data = response.json()
         assert data["total_updates"] == 15
         
-        # Verify RPC was called correctly
         mock_publisher.call_rpc.assert_called_once_with(
             event_type="TOTAL_UPDATES_RPC",
             payload={}
@@ -114,7 +112,6 @@ class TestRegisteredLast24hEndpoint:
         data = response.json()
         assert data["registered_last_24h"] == 7
         
-        # Verify RPC was called correctly
         mock_publisher.call_rpc.assert_called_once_with(
             event_type="REGISTERED_LAST_24_RPC",
             payload={}

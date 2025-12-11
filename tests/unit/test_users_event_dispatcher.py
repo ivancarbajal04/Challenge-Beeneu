@@ -43,7 +43,6 @@ class TestRegisterUserRPC:
     def test_register_user_sets_timestamps(self, reset_users_state, sample_user):
         result = register_user_rpc(sample_user)
         
-        # Verify timestamps are ISO format strings
         datetime.fromisoformat(result["created_at"])
         datetime.fromisoformat(result["updated_at"])
 
@@ -52,7 +51,6 @@ class TestRegisterUserRPC:
 class TestListUsersRPC:
     
     def test_list_users_no_filters_returns_all(self, reset_users_state):
-        # Register multiple users
         register_user_rpc({"name": "John", "surname": "Doe", "dni": "111", "address": "St 1"})
         register_user_rpc({"name": "Jane", "surname": "Smith", "dni": "222", "address": "St 2"})
         
@@ -104,7 +102,7 @@ class TestUpdateUserRPC:
         result = update_user_rpc({"id": user["id"], "name": "Jane"})
         
         assert result["name"] == "Jane"
-        assert result["surname"] == "Doe"  # Unchanged
+        assert result["surname"] == "Doe"
         assert result["id"] == user["id"]
     
     def test_update_user_multiple_fields(self, reset_users_state):
@@ -118,7 +116,7 @@ class TestUpdateUserRPC:
         
         assert result["name"] == "Jane"
         assert result["address"] == "New Street 123"
-        assert result["surname"] == "Doe"  # Unchanged
+        assert result["surname"] == "Doe"
     
     def test_update_user_not_found(self, reset_users_state):
         result = update_user_rpc({"id": 999, "name": "Jane"})
@@ -131,7 +129,7 @@ class TestUpdateUserRPC:
         original_updated_at = user["updated_at"]
         
         import time
-        time.sleep(0.01)  # Small delay to ensure timestamp difference
+        time.sleep(0.01)
         
         result = update_user_rpc({"id": user["id"], "name": "Jane"})
         
@@ -151,11 +149,8 @@ class TestUpdateUserRPC:
 class TestSendEmail:
     
     def test_send_email_executes_without_error(self, reset_users_state, sample_user_with_id):
-        # Since loguru doesn't integrate with pytest's caplog,
-        # we just verify the function executes successfully
         try:
             send_email(sample_user_with_id)
-            # If we get here, the function executed successfully
             assert True
         except Exception as e:
             pytest.fail(f"send_email raised an exception: {e}")

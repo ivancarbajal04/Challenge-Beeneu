@@ -62,7 +62,6 @@ class TestRegisteredLast24RPC:
     
     @freeze_time("2024-12-10 12:00:00")
     def test_registered_last_24h_within_window(self, reset_statistics_state):
-        # Register users at current time
         user_registered_event({})
         user_registered_event({})
         
@@ -73,12 +72,10 @@ class TestRegisteredLast24RPC:
     def test_registered_last_24h_excludes_old_registrations(self, reset_statistics_state):
         from apis.statistics.event_dispatcher import REGISTERED_USERS_TIMELINE
         
-        # Add old timestamp (26 hours ago)
         argentina_tz = ZoneInfo("America/Argentina/Buenos_Aires")
         old_timestamp = datetime.now(argentina_tz) - timedelta(hours=26)
         REGISTERED_USERS_TIMELINE.append(old_timestamp)
         
-        # Add recent timestamp (1 hour ago)
         recent_timestamp = datetime.now(argentina_tz) - timedelta(hours=1)
         REGISTERED_USERS_TIMELINE.append(recent_timestamp)
         
@@ -89,18 +86,15 @@ class TestRegisteredLast24RPC:
     def test_registered_last_24h_boundary_case(self, reset_statistics_state):
         from apis.statistics.event_dispatcher import REGISTERED_USERS_TIMELINE
         
-        # Add timestamp at exactly 24 hours ago
         argentina_tz = ZoneInfo("America/Argentina/Buenos_Aires")
         exactly_24h = datetime.now(argentina_tz) - timedelta(hours=24)
         REGISTERED_USERS_TIMELINE.append(exactly_24h)
         
-        # Add timestamp at 23.5 hours ago (should be included)
         within_24h = datetime.now(argentina_tz) - timedelta(hours=23, minutes=30)
         REGISTERED_USERS_TIMELINE.append(within_24h)
         
         result = registered_last_24_rpc({})
         
-        # The exactly 24h one might be excluded depending on precision
         assert result["registered_last_24h"] >= 1
 
 

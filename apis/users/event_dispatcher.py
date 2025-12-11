@@ -58,7 +58,7 @@ def update_user_rpc(payload: Dict[str, Any]) -> Dict[str, Any]:
     return user
 
 def send_email(payload: Dict[str, Any]) -> None:
-    logger.info(f"[UsersAPI] 📧 Sending email to {payload.get('name')} {payload.get('surname')}")
+    logger.info(f"[UsersAPI] Sending email to {payload.get('name')} {payload.get('surname')}")
 
 EVENT_HANDLERS = {
     "REGISTER_USER_RPC": register_user_rpc,
