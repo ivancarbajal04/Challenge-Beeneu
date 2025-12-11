@@ -1,0 +1,1150 @@
+{
+	"info": {
+		"_postman_id": "beeneu-challenge-enhanced-2024",
+		"name": "Beeneu Technical Challenge - Enhanced Testing Collection",
+		"description": "Enhanced API collection with 20+ user registrations and comprehensive test scenarios for thorough backend testing.\n\n## Setup\n1. Start LocalStack: `docker compose up -d`\n2. Start Gateway: `python main.py`\n3. Start Users service: `cd apis/users && python main.py`\n4. Start Statistics service: `cd apis/statistics && python main.py`\n\n## Base URL\nhttp://localhost:8000\n\n## What's New\n- 20 diverse user registrations\n- Multiple update scenarios\n- Comprehensive filter tests\n- Complete testing flows",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Bulk User Registration (20 Users)",
+			"item": [
+				{
+					"name": "Register User 01 - Juan Pérez",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Juan\",\n  \"surname\": \"Pérez\",\n  \"dni\": \"20345678\",\n  \"address\": \"Av. Corrientes 1234, Buenos Aires\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User 02 - María González",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"María\",\n  \"surname\": \"González\",\n  \"dni\": \"27456789\",\n  \"address\": \"Calle Florida 567, CABA\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User 03 - Carlos Rodríguez",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Carlos\",\n  \"surname\": \"Rodríguez\",\n  \"dni\": \"33567890\",\n  \"address\": \"Av. Santa Fe 2345, Buenos Aires\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User 04 - Ana Martínez",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Ana\",\n  \"surname\": \"Martínez\",\n  \"dni\": \"28678901\",\n  \"address\": \"Calle Lavalle 890, CABA\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User 05 - Diego Fernández",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Diego\",\n  \"surname\": \"Fernández\",\n  \"dni\": \"35789012\",\n  \"address\": \"Av. Rivadavia 3456, Buenos Aires\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User 06 - Laura Sánchez",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Laura\",\n  \"surname\": \"Sánchez\",\n  \"dni\": \"29890123\",\n  \"address\": \"Calle Maipú 1234, San Isidro\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User 07 - Roberto López",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Roberto\",\n  \"surname\": \"López\",\n  \"dni\": \"31901234\",\n  \"address\": \"Av. Cabildo 4567, Belgrano\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User 08 - Sofía Torres",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Sofía\",\n  \"surname\": \"Torres\",\n  \"dni\": \"26012345\",\n  \"address\": \"Calle Arenales 678, Recoleta\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User 09 - Martín Díaz",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Martín\",\n  \"surname\": \"Díaz\",\n  \"dni\": \"34123456\",\n  \"address\": \"Av. del Libertador 5678, Palermo\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User 10 - Valentina Ruiz",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Valentina\",\n  \"surname\": \"Ruiz\",\n  \"dni\": \"25234567\",\n  \"address\": \"Calle Juncal 901, Barrio Norte\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User 11 - Federico Morales",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Federico\",\n  \"surname\": \"Morales\",\n  \"dni\": \"32345678\",\n  \"address\": \"Av. Las Heras 2345, Recoleta\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User 12 - Camila Castro",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Camila\",\n  \"surname\": \"Castro\",\n  \"dni\": \"30456789\",\n  \"address\": \"Calle Córdoba 3456, San Telmo\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User 13 - Sebastián Romero",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Sebastián\",\n  \"surname\": \"Romero\",\n  \"dni\": \"36567890\",\n  \"address\": \"Av. Pueyrredón 4567, Caballito\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User 14 - Lucía Herrera",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Lucía\",\n  \"surname\": \"Herrera\",\n  \"dni\": \"24678901\",\n  \"address\": \"Calle Tucumán 5678, Microcentro\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User 15 - Alejandro Vargas",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Alejandro\",\n  \"surname\": \"Vargas\",\n  \"dni\": \"37789012\",\n  \"address\": \"Av. Callao 6789, Congreso\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User 16 - Florencia Medina",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Florencia\",\n  \"surname\": \"Medina\",\n  \"dni\": \"23890123\",\n  \"address\": \"Calle Viamonte 7890, Retiro\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User 17 - Nicolás Silva",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Nicolás\",\n  \"surname\": \"Silva\",\n  \"dni\": \"38901234\",\n  \"address\": \"Av. 9 de Julio 8901, Monserrat\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User 18 - Gabriela Ortiz",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Gabriela\",\n  \"surname\": \"Ortiz\",\n  \"dni\": \"22012345\",\n  \"address\": \"Calle Reconquista 9012, Puerto Madero\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User 19 - Maximiliano Benítez",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Maximiliano\",\n  \"surname\": \"Benítez\",\n  \"dni\": \"39123456\",\n  \"address\": \"Av. Belgrano 1234, Constitución\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User 20 - Julieta Navarro",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Julieta\",\n  \"surname\": \"Navarro\",\n  \"dni\": \"21234567\",\n  \"address\": \"Calle Defensa 2345, La Boca\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "20 diverse user registrations for comprehensive testing"
+		},
+		{
+			"name": "2. User Listing & Filtering",
+			"item": [
+				{
+					"name": "List All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								""
+							]
+						},
+						"description": "List all 20 registered users"
+					},
+					"response": []
+				},
+				{
+					"name": "Filter by Name - María",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/users/?name=María",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "María"
+								}
+							]
+						},
+						"description": "Should return María González"
+					},
+					"response": []
+				},
+				{
+					"name": "Filter by Surname - Pérez",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/users/?surname=Pérez",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								""
+							],
+							"query": [
+								{
+									"key": "surname",
+									"value": "Pérez"
+								}
+							]
+						},
+						"description": "Should return Juan Pérez"
+					},
+					"response": []
+				},
+				{
+					"name": "Filter by DNI - 20345678",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/users/?dni=20345678",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								""
+							],
+							"query": [
+								{
+									"key": "dni",
+									"value": "20345678"
+								}
+							]
+						},
+						"description": "Should return Juan Pérez"
+					},
+					"response": []
+				},
+				{
+					"name": "Filter by Address - Buenos Aires",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/users/?address=Buenos Aires",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								""
+							],
+							"query": [
+								{
+									"key": "address",
+									"value": "Buenos Aires"
+								}
+							]
+						},
+						"description": "Should return multiple users from Buenos Aires"
+					},
+					"response": []
+				},
+				{
+					"name": "Multiple Filters - Name & Surname",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/users/?name=Carlos&surname=Rodríguez",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Carlos"
+								},
+								{
+									"key": "surname",
+									"value": "Rodríguez"
+								}
+							]
+						},
+						"description": "Should return Carlos Rodríguez"
+					},
+					"response": []
+				}
+			],
+			"description": "Comprehensive filtering tests"
+		},
+		{
+			"name": "3. User Updates",
+			"item": [
+				{
+					"name": "Update User 1 - Change Address",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 1,\n  \"address\": \"Nueva Dirección 999, CABA\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"update"
+							]
+						},
+						"description": "Update only address for user 1"
+					},
+					"response": []
+				},
+				{
+					"name": "Update User 2 - Change Name",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 2,\n  \"name\": \"María José\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"update"
+							]
+						},
+						"description": "Update only name for user 2"
+					},
+					"response": []
+				},
+				{
+					"name": "Update User 3 - Multiple Fields",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 3,\n  \"name\": \"Carlos Alberto\",\n  \"surname\": \"Rodríguez López\",\n  \"address\": \"Av. Santa Fe 9999, Palermo\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"update"
+							]
+						},
+						"description": "Update multiple fields for user 3"
+					},
+					"response": []
+				},
+				{
+					"name": "Update User 5 - Change DNI",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 5,\n  \"dni\": \"40000000\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"update"
+							]
+						},
+						"description": "Update DNI for user 5"
+					},
+					"response": []
+				},
+				{
+					"name": "Update User 10 - Full Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 10,\n  \"name\": \"Valentina María\",\n  \"surname\": \"Ruiz Díaz\",\n  \"dni\": \"41000000\",\n  \"address\": \"Calle Nueva 1111, Villa Crespo\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"update"
+							]
+						},
+						"description": "Complete update of all fields for user 10"
+					},
+					"response": []
+				}
+			],
+			"description": "Various update scenarios"
+		},
+		{
+			"name": "4. Statistics API",
+			"item": [
+				{
+					"name": "Get Total Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/statistics/total-users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"statistics",
+								"total-users"
+							]
+						},
+						"description": "Should return 20 users"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Total Updates",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/statistics/total-updates",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"statistics",
+								"total-updates"
+							]
+						},
+						"description": "Should return 5 updates (from previous section)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users Registered Last 24h",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/statistics/registered-last-24h",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"statistics",
+								"registered-last-24h"
+							]
+						},
+						"description": "Should return 20 users (all registered recently)"
+					},
+					"response": []
+				}
+			],
+			"description": "Statistics endpoints testing"
+		},
+		{
+			"name": "5. Complete Testing Flow",
+			"item": [
+				{
+					"name": "Step 1 - Register Test User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Usuario\",\n  \"surname\": \"De Prueba\",\n  \"dni\": \"99999999\",\n  \"address\": \"Dirección de Test 123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 2 - Verify Registration",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/users/?dni=99999999",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								""
+							],
+							"query": [
+								{
+									"key": "dni",
+									"value": "99999999"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 3 - Update Test User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 21,\n  \"name\": \"Usuario Actualizado\",\n  \"address\": \"Nueva Dirección 456\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 4 - Verify Update",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/users/?dni=99999999",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								""
+							],
+							"query": [
+								{
+									"key": "dni",
+									"value": "99999999"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 5 - Check Final Statistics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/statistics/total-users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"statistics",
+								"total-users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 6 - Check Total Updates",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/statistics/total-updates",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"statistics",
+								"total-updates"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "End-to-end testing flow"
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,11 @@
+services:
+  localstack:
+    image: localstack/localstack:latest
+    environment:
+      - SERVICES=sqs, sns
+      - AWS_DEFAULT_REGION=sa-east-1
+    ports:
+      - "4566-4597:4566-4597"
+    volumes:
+      - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
+      - ./localstack-init:/etc/localstack/init/ready.d
