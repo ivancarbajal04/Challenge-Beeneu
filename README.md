@@ -42,44 +42,44 @@ Ante cualquier consulta, podés contactarnos.
 
 ---
 
-## Colección de Postman
+## Postman Collection
 
-Se incluye una colección completa de Postman para probar todos los endpoints del API.
+A complete Postman collection is included to test all API endpoints.
 
-**Archivo:** `Beeneu_Challenge_API_Enhanced.postman_collection.json`
+**File:** `Beeneu_Challenge_API_Enhanced.postman_collection.json`
 
-### Endpoints Incluidos
+### Included Endpoints
 
-- **Users API** (6 endpoints): Registro, Listado, Filtros, Actualización
-- **Statistics API** (3 endpoints): Total usuarios, Total actualizaciones, Últimas 24h
-- **Flujo Completo** (7 requests)
+- **Users API** (6 endpoints): Register, List, Filter, Update
+- **Statistics API** (3 endpoints): Total users, Total updates, Last 24h
+- **Complete Flow** (7 requests)
 
 ---
 
 ## Testing
 
-Este proyecto incluye una suite de tests con tests unitarios y de integración.
+This project includes a testing suite with unit and integration tests.
 
-### Instalación
+### Installation
 
-Instalar dependencias de testing:
+Install testing dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Ejecutar Tests
+### Running Tests
 
 ```bash
-# Ejecutar todos los tests
+# Run all tests
 make test
 
-# Solo tests unitarios
+# Run unit tests only
 make test-unit
 
-# Solo tests de integración
+# Run integration tests only
 make test-integration
 
-# Tests con reporte de coverage
+# Run tests with coverage report
 make test-coverage
 ```

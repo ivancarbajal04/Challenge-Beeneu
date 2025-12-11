@@ -1,42 +1,42 @@
 # Testing
 
-Los tests están organizados en las carpetas `unit/` e `integration/`.
+Tests are organized in `unit/` and `integration/` folders.
 
-## Ejecutar Tests
+## Running Tests
 
 ```bash
-# Todos los tests
+# All tests
 pytest -v
-make test          # Alternativa (requiere make)
+make test          # Alternative (requires make)
 
-# Solo tests unitarios
+# Unit tests only
 pytest tests/unit -v -m unit
-make test-unit     # Alternativa
+make test-unit     # Alternative
 
-# Solo tests de integración
+# Integration tests only
 pytest tests/integration -v -m integration
-make test-integration     # Alternativa
+make test-integration     # Alternative
 
-# Con coverage
+# With coverage
 pytest --cov=. --cov-report=html --cov-report=term-missing
-make test-coverage     # Alternativa
+make test-coverage     # Alternative
 ```
 
-**Nota:** Los comandos `make` funcionan en WSL/Linux. Usar comandos `pytest` directamente en Git Bash/PowerShell.
+**Note:** `make` commands work in WSL/Linux. Use `pytest` commands directly in Git Bash/PowerShell.
 
 ## Coverage
 
-- **Tests unitarios**: 32 tests cubriendo event dispatchers
-- **Tests de integración**: 20 tests cubriendo endpoints del API
+- **Unit tests**: 32 tests covering event dispatchers
+- **Integration tests**: 20 tests covering API endpoints
 - **Total**: 52 tests
 
 ## Fixtures
 
-Disponibles en `conftest.py`:
+Available in `conftest.py`:
 
-- `sample_user` - Diccionario con datos de usuario
-- `sample_user_with_id` - Objeto usuario completo
-- `mock_publisher` - Publisher mockeado
-- `reset_users_state` - Limpia estado de users
-- `reset_statistics_state` - Limpia estado de statistics
-- `test_client` - Cliente de test de FastAPI
+- `sample_user` - User data dict
+- `sample_user_with_id` - Complete user object
+- `mock_publisher` - Mocked Publisher
+- `reset_users_state` - Clean users state
+- `reset_statistics_state` - Clean statistics state
+- `test_client` - FastAPI test client
