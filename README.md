@@ -42,7 +42,7 @@ Ante cualquier consulta, podés contactarnos.
 
 ---
 
-## 📮 Colección de Postman
+## Colección de Postman
 
 Se incluye una colección completa de Postman para probar todos los endpoints del API.
 
@@ -56,7 +56,7 @@ Se incluye una colección completa de Postman para probar todos los endpoints de
 
 ---
 
-## 🧪 Testing
+## Testing
 
 Este proyecto incluye una suite de tests con tests unitarios y de integración.
 
