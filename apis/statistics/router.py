@@ -1,15 +1,17 @@
 from fastapi import APIRouter, HTTPException
 from loguru import logger
 import sys
-sys.path.append("../../")
 
+sys.path.append("../../")
 from core.publisher import default_publisher_service
 
 router = APIRouter(prefix="/statistics", tags=["statistics"])
 
+from apis.statistics.schemas import TotalUsersResponse, TotalUpdatesResponse, TimelineResponse
+
 publisher = default_publisher_service()
 
-@router.get("/total-users")
+@router.get("/total-users", response_model=TotalUsersResponse)
 def get_total_users():
     try:
         response = publisher.call_rpc(
@@ -27,7 +29,7 @@ def get_total_users():
         logger.error(f"Error getting total users: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
     
-@router.get("/total-updates")
+@router.get("/total-updates", response_model=TotalUpdatesResponse)
 def get_total_updates():
     try:
         response = publisher.call_rpc(
@@ -45,7 +47,7 @@ def get_total_updates():
         logger.error(f"Error getting total updates: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
-@router.get("/registered-last-24h")
+@router.get("/registered-last-24h", response_model=TimelineResponse)
 def get_registered_last_24h():
     try:
         response = publisher.call_rpc(

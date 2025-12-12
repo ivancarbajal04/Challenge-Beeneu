@@ -50,31 +50,40 @@ def mock_publisher():
 
 @pytest.fixture
 def reset_users_state():
-    from apis.users import event_dispatcher
-    original_users = event_dispatcher.USERS.copy()
-    original_count = event_dispatcher.USER_UPDATES_COUNT
-    event_dispatcher.USERS.clear()
-    event_dispatcher.USER_UPDATES_COUNT = 0
+    from apis.users.repository import UserRepository
+    repo = UserRepository()
+    original_users = repo.users.copy()
+    original_count = repo._updates_count
+    
+    repo.users.clear()
+    repo._updates_count = 0
+    
     yield
-    event_dispatcher.USERS.clear()
-    event_dispatcher.USERS.extend(original_users)
-    event_dispatcher.USER_UPDATES_COUNT = original_count
+    
+    repo.users.clear()
+    repo.users.extend(original_users)
+    repo._updates_count = original_count
 
 
 @pytest.fixture
 def reset_statistics_state():
-    from apis.statistics import event_dispatcher
-    original_total_users = event_dispatcher.TOTAL_USERS
-    original_total_updates = event_dispatcher.TOTAL_UPDATES
-    original_timeline = event_dispatcher.REGISTERED_USERS_TIMELINE.copy()
-    event_dispatcher.TOTAL_USERS = 0
-    event_dispatcher.TOTAL_UPDATES = 0
-    event_dispatcher.REGISTERED_USERS_TIMELINE.clear()
+    from apis.statistics.repository import StatisticsRepository
+    repo = StatisticsRepository()
+    
+    original_total_users = repo._total_users
+    original_total_updates = repo._total_updates
+    original_timeline = repo._user_registration_timeline.copy()
+    
+    repo._total_users = 0
+    repo._total_updates = 0
+    repo._user_registration_timeline.clear()
+    
     yield
-    event_dispatcher.TOTAL_USERS = original_total_users
-    event_dispatcher.TOTAL_UPDATES = original_total_updates
-    event_dispatcher.REGISTERED_USERS_TIMELINE.clear()
-    event_dispatcher.REGISTERED_USERS_TIMELINE.extend(original_timeline)
+    
+    repo._total_users = original_total_users
+    repo._total_updates = original_total_updates
+    repo._user_registration_timeline.clear()
+    repo._user_registration_timeline.extend(original_timeline)
 
 
 @pytest.fixture

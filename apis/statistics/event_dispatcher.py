@@ -1,57 +1,34 @@
 from loguru import logger
-from datetime import datetime, timedelta
-from zoneinfo import ZoneInfo
 from typing import Dict, Any
+import sys
 
-def get_argentina_time() -> datetime:
-    return datetime.now(ZoneInfo("America/Argentina/Buenos_Aires"))
+sys.path.append("../../")
+from apis.statistics.repository import StatisticsRepository
 
-TOTAL_USERS: int = 0
-TOTAL_UPDATES: int = 0
-REGISTERED_USERS_TIMELINE: list = []
+class EventHandlers:
+    def __init__(self, repository: StatisticsRepository):
+        self.repo = repository
 
-def total_users_rpc(payload: Dict[str, Any]) -> Dict[str, Any]:
+    def total_users_rpc(self, payload: Dict[str, Any]) -> Dict[str, Any]:
+        count = self.repo.get_total_users()
+        logger.info(f"[StatisticsAPI] Total users requested: {count}")
+        return {"total_users": count}
 
-    logger.info(f"[StatisticsAPI] Total users requested: {TOTAL_USERS}")
+    def total_updates_rpc(self, payload: Dict[str, Any]) -> Dict[str, Any]:
+        count = self.repo.get_total_updates()
+        logger.info(f"[StatisticsAPI] Total updates requested: {count}")
+        return {"total_updates": count}
 
-    return {"total_users": TOTAL_USERS}
+    def registered_last_24_rpc(self, payload: Dict[str, Any]) -> Dict[str, Any]:
+        count = self.repo.get_registered_last_24h()
+        logger.info(f"[StatisticsAPI] Users registered in last 24h: {count}")
+        return {"registered_last_24h": count}
 
-def total_updates_rpc(payload: Dict[str, Any]) -> Dict[str, Any]:
+    def user_registered_event(self, payload: Dict[str, Any]) -> None:
+        self.repo.increment_total_users()
+        logger.info(f"[StatisticsAPI] User registered event handled")
 
-    logger.info(f"[StatisticsAPI] Total updates requested: {TOTAL_UPDATES}")
+    def user_updated_event(self, payload: Dict[str, Any]) -> None:
+        self.repo.increment_total_updates()
+        logger.info(f"[StatisticsAPI] User updated event handled")
 
-    return {"total_updates": TOTAL_UPDATES}
-
-def registered_last_24_rpc(payload: Dict[str, Any]) -> Dict[str, Any]:
-
-    now = get_argentina_time()
-    cutoff = now - timedelta(hours=24)
-    
-    count = sum(1 for timestamp in REGISTERED_USERS_TIMELINE if timestamp > cutoff)
-
-    logger.info(f"[StatisticsAPI] Users registered in last 24h: {count}")
-
-    return {"registered_last_24h": count}
-
-def user_registered_event(payload: Dict[str, Any]) -> None:
-    global TOTAL_USERS
-    TOTAL_USERS += 1
-    
-    REGISTERED_USERS_TIMELINE.append(get_argentina_time())
-
-    logger.info(f"[StatisticsAPI] User registered event received: {TOTAL_USERS}")
-
-def user_updated_event(payload: Dict[str, Any]) -> None:
-    global TOTAL_UPDATES
-    TOTAL_UPDATES += 1
-
-    logger.info(f"[StatisticsAPI] User updated event received: {TOTAL_UPDATES}")
-
-
-EVENT_HANDLERS = {
-    "TOTAL_USERS_RPC": total_users_rpc,
-    "TOTAL_UPDATES_RPC": total_updates_rpc,
-    "REGISTERED_LAST_24_RPC": registered_last_24_rpc,
-    "USER_REGISTERED_EVENT": user_registered_event,
-    "USER_UPDATED_EVENT": user_updated_event,
-}

@@ -4,7 +4,8 @@ sys.path.append("../../")
 
 from loguru import logger
 from core.consumer import Consumer
-from event_dispatcher import EVENT_HANDLERS
+from apis.statistics.repository import StatisticsRepository
+from apis.statistics.event_dispatcher import EventHandlers
 
 
 # Queue URLs
@@ -14,6 +15,17 @@ RESPONSE_QUEUE_URL = "http://localhost:4566/000000000000/beeneu-response-queue"
 
 def main():
     logger.info("[StatisticsAPI] Starting consumer...")
+    
+    repository = StatisticsRepository()
+    handlers = EventHandlers(repository=repository)
+    
+    EVENT_HANDLERS = {
+        "TOTAL_USERS_RPC": handlers.total_users_rpc,
+        "TOTAL_UPDATES_RPC": handlers.total_updates_rpc,
+        "REGISTERED_LAST_24_RPC": handlers.registered_last_24_rpc,
+        "USER_REGISTERED_EVENT": handlers.user_registered_event,
+        "USER_UPDATED_EVENT": handlers.user_updated_event,
+    }
     
     consumer = Consumer(
         queue_url=QUEUE_URL,

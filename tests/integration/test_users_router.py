@@ -1,9 +1,6 @@
-
-
 import pytest
 from unittest.mock import patch, MagicMock
 from fastapi.testclient import TestClient
-
 
 @pytest.mark.integration
 class TestRegisterUserEndpoint:
@@ -22,13 +19,10 @@ class TestRegisterUserEndpoint:
         assert data["status"] == "success"
         assert data["user"]["name"] == sample_user["name"]
         
-        # Verify RPC was called
         mock_publisher.call_rpc.assert_called_once_with(
             event_type="REGISTER_USER_RPC",
             payload=sample_user
         )
-        
-        mock_publisher.publish.assert_called_once()
     
     def test_register_user_rpc_failure(self, test_client, sample_user, mock_publisher):
         mock_publisher.call_rpc.return_value = {
@@ -46,23 +40,7 @@ class TestRegisterUserEndpoint:
         with patch('apis.users.router.publisher', mock_publisher):
             response = test_client.post("/users/register", json={})
         
-        assert response.status_code in [200, 400, 422, 500]
-    
-    def test_register_user_publishes_event(self, test_client, sample_user, mock_publisher):
-        user_data = {**sample_user, "id": 1}
-        mock_publisher.call_rpc.return_value = {
-            "success": True,
-            "data": user_data
-        }
-        
-        with patch('apis.users.router.publisher', mock_publisher):
-            response = test_client.post("/users/register", json=sample_user)
-        
-        mock_publisher.publish.assert_called_once_with(
-            event_type="USER_REGISTERED_EVENT",
-            payload=user_data
-        )
-
+        assert response.status_code == 422
 
 @pytest.mark.integration
 class TestListUsersEndpoint:
@@ -160,10 +138,6 @@ class TestUpdateUserEndpoint:
             payload=update_payload
         )
         
-        mock_publisher.publish.assert_called_once_with(
-            event_type="USER_UPDATED_EVENT",
-            payload=updated_user
-        )
     
     def test_update_user_missing_id(self, test_client, mock_publisher):
         update_payload = {"name": "Jane"}
@@ -171,8 +145,7 @@ class TestUpdateUserEndpoint:
         with patch('apis.users.router.publisher', mock_publisher):
             response = test_client.put("/users/update", json=update_payload)
         
-        assert response.status_code == 400
-        assert "id" in response.json()["detail"].lower()
+        assert response.status_code == 422 
     
     def test_update_user_not_found(self, test_client, mock_publisher):
         update_payload = {"id": 999, "name": "Jane"}

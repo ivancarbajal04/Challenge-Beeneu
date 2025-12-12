@@ -3,7 +3,6 @@ from loguru import logger
 from typing import Dict, Any
 import json, time, boto3
 
-
 # AWS LocalStack Configuration demo
 AWS_REGION = 'sa-east-1'
 ENDPOINT_URL = 'http://localhost:4566'

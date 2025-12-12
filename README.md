@@ -48,21 +48,21 @@ A complete Postman collection is included to test all API endpoints.
 
 **File:** `Beeneu_Challenge_API_Enhanced.postman_collection.json`
 
-### Included Endpoints
+### Collection Features
 
-- **Users API** (6 endpoints): Register, List, Filter, Update
-- **Statistics API** (3 endpoints): Total users, Total updates, Last 24h
-- **Complete Flow** (7 requests)
+- **Users API**: Covers Registration, Listing (with filters), and Updates.
+- **Statistics API**: Endpoints for Total Users, Updates, and 24h metrics.
+- **End-to-End Flow**: A step-by-step sequence to verify the entire system lifecycle.
 
 ---
 
 ## Testing
 
-This project includes a testing suite with unit and integration tests.
+The project includes a comprehensive test suite covering both unit logic and integration scenarios.
 
-### Installation
+### Prerequisites
 
-Install testing dependencies:
+Ensure all dependencies are installed:
 
 ```bash
 pip install -r requirements.txt
@@ -70,16 +70,18 @@ pip install -r requirements.txt
 
 ### Running Tests
 
+You can use the provided `Makefile` shortcuts or run `pytest` directly.
+
 ```bash
-# Run all tests
+# Run all tests (Unit + Integration)
 make test
 
-# Run unit tests only
+# Run Unit Tests only (Handlers & Repositories)
 make test-unit
 
-# Run integration tests only
+# Run Integration Tests only (Router & RPC flows)
 make test-integration
 
-# Run tests with coverage report
+# Generate Coverage Report
 make test-coverage
 ```

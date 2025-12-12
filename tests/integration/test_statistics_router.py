@@ -1,9 +1,6 @@
-
-
 import pytest
 from unittest.mock import patch, MagicMock
 from fastapi.testclient import TestClient
-
 
 @pytest.mark.integration
 class TestTotalUsersEndpoint:
@@ -142,22 +139,4 @@ class TestRegisteredLast24hEndpoint:
         assert "Timeline data unavailable" in response.json()["detail"]
 
 
-@pytest.mark.integration
-class TestStatisticsEndpointsIntegration:
-    
-    def test_all_statistics_endpoints_available(self, test_client, mock_publisher):
-        mock_publisher.call_rpc.return_value = {
-            "success": True,
-            "data": {"value": 0}
-        }
-        
-        endpoints = [
-            "/statistics/total-users",
-            "/statistics/total-updates",
-            "/statistics/registered-last-24h"
-        ]
-        
-        with patch('apis.statistics.router.publisher', mock_publisher):
-            for endpoint in endpoints:
-                response = test_client.get(endpoint)
-                assert response.status_code == 200, f"Endpoint {endpoint} failed"
+

@@ -4,8 +4,8 @@ sys.path.append("../../")
 
 from loguru import logger
 from core.consumer import Consumer
-from event_dispatcher import EVENT_HANDLERS
-
+from apis.users.repository import UserRepository
+from apis.users.event_dispatcher import EventHandlers
 
 # Queue URLs
 QUEUE_URL = "http://localhost:4566/000000000000/users-queue"
@@ -14,6 +14,16 @@ RESPONSE_QUEUE_URL = "http://localhost:4566/000000000000/beeneu-response-queue"
 
 def main():
     logger.info("[UsersAPI] Starting consumer...")
+    
+    repository = UserRepository()
+    handlers = EventHandlers(repository=repository)
+    
+    EVENT_HANDLERS = {
+        "REGISTER_USER_RPC": handlers.register_user_rpc,
+        "LIST_USERS_RPC": handlers.list_users_rpc,
+        "UPDATE_USER_RPC": handlers.update_user_rpc,
+        "SEND_EMAIL": handlers.send_email,
+    }
     
     consumer = Consumer(
         queue_url=QUEUE_URL,
